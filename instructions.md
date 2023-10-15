@@ -89,6 +89,7 @@ Your task is to present some data on your web app. Start with:
 - the temperature (rounded to 1 decimal place)
 - and what type of weather it is (the "description" in the JSON)
 
+
 ### Step 3 - Features
 Now it's time to split up and start working in GitHub branches. Decide beforehand when you should have a "feature freeze" so that you make time for merging.
 
