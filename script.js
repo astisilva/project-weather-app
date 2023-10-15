@@ -23,7 +23,7 @@ function formatTime(date) {
   return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
-// Function to update the UI with weather data
+// Function to update the UI with weather data ----------------------
 const updateWeatherUI = (data) => {
   tempElement.textContent = `${capitalizeFirstLetter(
     data.weather[0].description
@@ -58,15 +58,48 @@ const updateWeatherUI = (data) => {
   }
 };
 
+// Function to update the UI with forecast data --------------------
+const updateForecastUI = (data) => {
+  const forecastList = data.list;
+  forecastContainer.innerHTML = ''; // Clear previous forecast data
+  console.log(data, 'updateForecastUI ');
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+  // Display forecast for the next 7 days
+  for (let i = 0; i < 7; i++) {
+    const dayForecast = forecastList.find((item) => new Date(item.dt * 1000).getDay() === i);
+
+    if (dayForecast) {
+      const date = new Date(dayForecast.dt * 1000);
+      const weekday = daysOfWeek[i];
+      const temperature = dayForecast.main.temp.toFixed(1);
+
+      const listItem = document.createElement('li');
+      listItem.innerHTML = `<span>${weekday}</span><span class="weather-condition"><img class="weather-icon" src="https://openweathermap.org/img/wn/${dayForecast.weather[0].icon}@2x.png"></span> <span>${temperature}°C</span>`;
+      forecastContainer.appendChild(listItem);
+    }
+  }
+};
+
 // Function to fetch and update data
 const fetchAndUpdateData = (city) => {
-  // Fetch and update UI with weather data
+  // Fetch and update UI with weather data  
   getWeatherData(city)
     .then(updateWeatherUI)
     .catch((error) => {
       console.error('Error fetching current weather:', error);
     });
+
+      // Fetch and update UI with forecast data
+  getForecastData(city)
+  .then(updateForecastUI)
+  .catch((error) => {
+    console.error('Error fetching forecast:', error);
+  });
 };
+
+
+
 
 // Fetch and update data for Stockholm by default
 fetchAndUpdateData('Stockholm');
