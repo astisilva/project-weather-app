@@ -37,3 +37,46 @@ body {
   padding: 7px;
   background: transparent;
 }
+
+.container {
+  margin: 20px 0;
+  width: 296px;
+  flex-shrink: 0;
+  color: #2A5510;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 0.2;
+}
+.weather-info {
+  margin-top: 20px; 
+}
+
+#forecast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#forecast-list {
+  list-style: none;
+  padding: 0;
+}
+
+#forecast-list li {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+#forecast-list span {
+  font-size: 16px;
+  margin-right: 47px; 
+}
+#forecast-list .weather-icon {
+  width: 30px; 
+  height: 30px; 
+}
+
+#forecast-list .weather-condition {
+  margin-right: 10px;
+}
