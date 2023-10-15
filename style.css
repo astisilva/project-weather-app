@@ -17,3 +17,23 @@ body {
   border: 1px solid #707070;
   background: #F7E9B9;
 }
+
+.input-container {
+  margin-top: 20px;
+}
+
+#city-input {
+  border: 1px solid #2A5510;
+  background: transparent;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+}
+
+#submit-button {
+  border-radius: 5px;
+  border: 1px solid #2A5510;
+  padding: 7px;
+  background: transparent;
+}
