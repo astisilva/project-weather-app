@@ -35,7 +35,6 @@ const updateWeatherUI = (data) => {
     data.weather[0].description
   )} | ${data.main.temp.toFixed(1)}°C`;
 
-  console.log(data);
 
   // Format and set sunrise time
   const sunriseTime = new Date(data.sys.sunrise * 1000);
@@ -106,3 +105,17 @@ const fetchAndUpdateData = (city) => {
 
 // Fetch and update data for Stockholm by default
 fetchAndUpdateData('Stockholm');
+
+// Event listener for the submit button
+const submitButton = document.getElementById('submit-button');
+submitButton.addEventListener('click', () => {
+  const cityInput = document.getElementById('city-input');
+  const cityName = cityInput.value.trim();
+
+  if (cityName) {
+    // Fetch and update data for the entered city
+    fetchAndUpdateData(cityName);
+  } else {
+    console.error('City name is empty');
+  }
+});
