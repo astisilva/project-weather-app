@@ -35,7 +35,6 @@ const updateWeatherUI = (data) => {
     data.weather[0].description
   )} | ${data.main.temp.toFixed(1)}°C`;
 
-
   // Format and set sunrise time
   const sunriseTime = new Date(data.sys.sunrise * 1000);
   sunriseElement.textContent = `Sunrise: ${formatTime(sunriseTime)}`;
@@ -70,13 +69,13 @@ const updateForecastUI = (data) => {
 
   const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-  // Display forecast for the next 7 days
-  for (let i = 0; i < 7; i++) {
+  // Display forecast for the next 5 days
+  for (let i = 1; i <= 5; i++) {
     const dayForecast = forecastList.find((item) => new Date(item.dt * 1000).getDay() === i);
 
     if (dayForecast) {
       const date = new Date(dayForecast.dt * 1000);
-      const weekday = daysOfWeek[i];
+      const weekday = daysOfWeek[i - 1]; // Adjust index to start from Monday
       const temperature = dayForecast.main.temp.toFixed(1);
 
       const listItem = document.createElement('li');

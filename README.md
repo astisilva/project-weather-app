@@ -1,6 +1,6 @@
 # Weather App
 
-A weather app to show weather information and a 7-day forecast.
+A weather app to show weather information and a 5-day forecast.
 
 ## The problem
 
@@ -19,4 +19,4 @@ A weather app to show weather information and a 7-day forecast.
 
 ## View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+- Link to the project https://frabjous-sawine-107040.netlify.app/
