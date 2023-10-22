@@ -64,18 +64,19 @@ const updateWeatherUI = (data) => {
 
 // Function to update the UI with forecast data --------------------------------
 const updateForecastUI = (data) => {
+  console.log('Forecast data:', data); // Log the data for inspection
   const forecastList = data.list;
   forecastContainer.innerHTML = ''; // Clear previous forecast data
 
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-  // Display forecast for the next 5 days
-  for (let i = 1; i <= 5; i++) {
+  // Display forecast for the next 7 days
+  for (let i = 0; i < 7; i++) {
     const dayForecast = forecastList.find((item) => new Date(item.dt * 1000).getDay() === i);
 
     if (dayForecast) {
       const date = new Date(dayForecast.dt * 1000);
-      const weekday = daysOfWeek[i - 1]; // Adjust index to start from Monday
+      const weekday = daysOfWeek[i]; // Adjust index to start from Sunday
       const temperature = dayForecast.main.temp.toFixed(1);
 
       const listItem = document.createElement('li');
@@ -84,7 +85,6 @@ const updateForecastUI = (data) => {
     }
   }
 };
-
 // Function to fetch and update data
 const fetchAndUpdateData = (city) => {
   // Fetch and update UI with weather data
